@@ -1,0 +1,74 @@
+﻿@model EAD_project_4.Models.Recipe
+@{
+    Layout = "~/Views/Shared/userView.cshtml";
+}
+
+<body id="page7">
+<!--==============================header=================================-->
+<header>
+  <div class="row-top">
+    <div class="main">
+      <div class="wrapper">
+        <h1><a href="/User/index">Cook Book</a></h1>
+        <nav>
+          <ul class="menu">
+            <li><a href="/User/index">About</a></li>
+            <li><a  href="/User/menu">Recipes</a></li>
+             <li><a class="active" href="/User/search">Search </a></li>
+            <li><a href="/User/faq">FAQ </a></li>
+            <li><a href="/User/contact">Suggest</a></li>
+            <li><a href="/Admin/login">Admin Login</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <div class="row-bot">
+    <div class="row-bot-bg">
+      <div class="main">
+        <h2>Tasty Recipes <span>for any Occasion</span></h2>
+      </div>
+    </div>
+  </div>
+</header>
+<!--==============================content================================-->
+<section id="content">
+  <div class="main">
+    <div class="wrapper">
+
+      <article class="col-2">
+        <h3 class="p1">Search Recipe</h3>
+
+          @using (Html.BeginForm("SearchRec", "User", FormMethod.Post, new { id = "contact-form", enctype = "multipart/form-data" }))
+          {
+                    <fieldset>
+              @Html.AntiForgeryToken()
+              @Html.ValidationSummary(true)
+                <span class="text-form">
+               @Html.Label("Recipe's Name")
+                  </span>
+               @Html.TextBoxFor(m => m.Name)
+              &nbsp&nbsp&nbsp&nbsp <span style="color:red">@Html.ValidationMessageFor(model => model.Name)</span>
+              <br />
+              <br />
+           
+            <div class="wrapper">
+              <div class="extra-wrap">
+               <div style="text-align:center"><input type="submit" style="width:150px; font-size:large ; height:30px ; border-style:groove; border-width:thin; border-color:black; border-radius:5px; background-image:url(../images/search.PNG);display:inline-block;text-indent: -9000px; text-transform: capitalize;"/></div>
+              </div>
+            </div>
+          </fieldset>
+                }
+      </article>
+    </div>
+  </div>
+</section>
+<!--==============================footer=================================-->
+
+<script type="text/javascript">Cufon.now();</script>
+    </body>
+
+@section Scripts
+{
+    @Scripts.Render("~/bundles/jqueryval")
+}
